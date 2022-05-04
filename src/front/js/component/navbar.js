@@ -14,14 +14,14 @@ export const Navbar = () => {
 				</Link>
 				{store.user == null ? <div className="ml-auto">
 					<Link to="/login" className="me-3">
-						<button className="btn btn-primary">Login</button>
+						<button className="btn btn-light">Login</button>
 					</Link>
 					<Link to="/register">
-						<button className="btn btn-primary">Sign up</button>
+						<button className="btn btn-light">Sign up</button>
 					</Link>
 				</div> : <div className="ml-auto">
 					<Link to="/">
-						<button className="btn btn-primary" onClick={() => {
+						<button className="btn btn-light" onClick={() => {
 							localStorage.clear()
 							actions.setStoreUser(null)
 						}}>Log out</button>

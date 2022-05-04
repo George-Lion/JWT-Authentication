@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import "../../styles/home.css";
+import "../../styles/private.css";
 
-export const Home = () => {
+export const Private = () => {
 	let history = useHistory()
 	const [info, setInfo] = useState([]);
 	const [error, setError] = useState(null);

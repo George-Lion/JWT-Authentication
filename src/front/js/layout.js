@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./pages/home";
+import { Private } from "./pages/private";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 
@@ -24,7 +24,7 @@ const Layout = () => {
 					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<Home />
+							<Private />
 						</Route>
 						<Route exact path="/login">
 							<Login />

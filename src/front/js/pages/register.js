@@ -20,12 +20,14 @@ export const Register = () => {
     }
 
     return <div className="text-center mt-5">
-        <div className="row">
-            <label htmlFor="email" className="col-1">Email</label>
-            <input id="email" className="col-3" onChange={(e) => setUser({ ...user, email: e.target.value })}></input>
-            <label htmlFor="password" className="col-1">password</label>
-            <input id="password" className="col-3" onChange={(e) => setUser({ ...user, password: e.target.value })}></input><br />
-            <button className="col-2 offset-1" onClick={() => sendUserInfo()}>Sign up</button>
+        <h1 className="m-5">Sign Up</h1>
+        <h5 className="m-5">please enter the following data</h5>
+        <div className="">
+            <h5 htmlFor="email" className="m-2">Email</h5>
+            <input id="email" className="col-2 mb-3" onChange={(e) => setUser({ ...user, email: e.target.value })}></input>
+            <h5 htmlFor="password" className="">Password</h5>
+            <input id="password" className="col-2" onChange={(e) => setUser({ ...user, password: e.target.value })}></input><br />
+            <button className="col-1 mt-3 btn-dark" onClick={() => sendUserInfo()}>Sign up</button>
         </div>
         {error != null ? <h3 className="text-danger">{error}</h3> : null}
 
