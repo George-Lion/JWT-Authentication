@@ -28,7 +28,7 @@ def login_user():
             password=body_password).first()
         if user:
             token = create_access_token(identity=user.id)
-            return jsonify({"logged": True, "token": token}), 200
+            return jsonify({"logged": True, "token": token, "user": user.serialize()}), 200
         else:
             return jsonify({"logged": False, "msg": "Bad info"}), 400
     else:
@@ -41,6 +41,14 @@ def get_planets():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
     if user:
-        return jsonify({"info": ["Calamardo", "planet2"]}), 200
+        return jsonify({"info": ["Calamardo", "Batman", "King"]}), 200
     else:
         return jsonify({"msg": "Not authorized"}), 400
+
+
+@api.route("/user", methods=["GET"])
+@jwt_required()
+def get_user():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    return jsonify({"user": user.serialize()}), 200

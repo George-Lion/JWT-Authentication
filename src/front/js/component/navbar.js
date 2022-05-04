@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext"
 import { Link } from "react-router-dom";
+import "../../styles/index.css";
+
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar navbar-light bg-black">
 			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<Link to="/" className="" style={{ "color": "black" }}>
+					<span className="navbar-brand mb-0 h1 text-light">HOME</span>
 				</Link>
-				<div className="ml-auto">
+				{store.user == null ? <div className="ml-auto">
 					<Link to="/login" className="me-3">
 						<button className="btn btn-primary">Login</button>
 					</Link>
 					<Link to="/register">
-						<button className="btn btn-primary">Register</button>
+						<button className="btn btn-primary">Sign up</button>
 					</Link>
-				</div>
+				</div> : <div className="ml-auto">
+					<Link to="/">
+						<button className="btn btn-primary" onClick={() => {
+							localStorage.clear()
+							actions.setStoreUser(null)
+						}}>Log out</button>
+					</Link></div>}
 			</div>
 		</nav>
 	);

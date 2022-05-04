@@ -25,7 +25,7 @@ export const Register = () => {
             <input id="email" className="col-3" onChange={(e) => setUser({ ...user, email: e.target.value })}></input>
             <label htmlFor="password" className="col-1">password</label>
             <input id="password" className="col-3" onChange={(e) => setUser({ ...user, password: e.target.value })}></input><br />
-            <button className="col-2 offset-1" onClick={() => sendUserInfo()}>Register</button>
+            <button className="col-2 offset-1" onClick={() => sendUserInfo()}>Sign up</button>
         </div>
         {error != null ? <h3 className="text-danger">{error}</h3> : null}
 

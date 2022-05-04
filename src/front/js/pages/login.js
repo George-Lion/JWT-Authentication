@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext"
+import { useHistory } from "react-router-dom";
+import "../../styles/login.css";
+
 
 export const Login = () => {
+    const history = useHistory();
+    const { store, actions } = useContext(Context);
     const [user, setUser] = useState({});
     const [error, setError] = useState(null);
 
@@ -17,7 +23,8 @@ export const Login = () => {
                 setError("Bad info")
             } else if (data.logged == true) {
                 localStorage.setItem("token", data.token)
-
+                actions.setStoreUser(data.user)
+                history.push("/")
 
             }
         } else {

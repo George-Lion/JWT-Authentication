@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Home = () => {
-
+	let history = useHistory()
 	const [info, setInfo] = useState([]);
 	const [error, setError] = useState(null);
 
@@ -26,14 +28,15 @@ export const Home = () => {
 		}
 
 	}
-
-	return (
-		<div className="text-center mt-5">
+	if (localStorage.getItem("token")) {
+		return <div className="text-center mt-5">
 			<h1>This is my super page</h1>
 			{info.map((planet, i) => {
-				return <h1 key={i}>{planet}</h1>
+				return <h2 key={i}>{planet}</h2>
 			})}
 			<h1>{error}</h1>
 		</div>
-	);
+	} else {
+		return <Redirect to="/login"></Redirect>
+	}
 };
