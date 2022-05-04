@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 
 export const Register = () => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
+    const [error, setError] = useState(null);
 
     const sendUserInfo = async () => {
-        const response = await fetch("https://3001-4geeksacade-reactflaskh-1n3r28z34jr.ws-eu43.gitpod.io/api/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user)
-        });
-        const data = await response.json();
-        console.log(data);
+        if (user.email != null && user.email.trim() != "") {
+            setError(null)
+            const response = await fetch("https://3001-4geeksacade-reactflaskh-1n3r28z34jr.ws-eu43.gitpod.io/api/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user)
+            });
+            const data = await response.json();
+        } else {
+            setError("Bad info");
+        }
 
     }
 
@@ -22,6 +27,7 @@ export const Register = () => {
             <input id="password" className="col-3" onChange={(e) => setUser({ ...user, password: e.target.value })}></input><br />
             <button className="col-2 offset-1" onClick={() => sendUserInfo()}>Register</button>
         </div>
+        {error != null ? <h3 className="text-danger">{error}</h3> : null}
 
     </div>
 }

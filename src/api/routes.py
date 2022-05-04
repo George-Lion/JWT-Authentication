@@ -7,6 +7,7 @@ from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
 
+
 @api.route("/register", methods=["POST"])
 def register_user():
     body_email = request.json.get("email")
@@ -15,6 +16,21 @@ def register_user():
         new_user = User(email=body_email, password=body_password)
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"create": True, "user": new_user.serialize()}), 200
+        return jsonify({"create": True, }), 200
     else:
-        return jsonify({"create": False, "msg": "Missing info"}), 200
+        return jsonify({"create": False, "msg": "Missing info"}), 400
+
+
+@api.route("/login", methods=["POST"])
+def login_user():
+    body_email = request.json.get("email")
+    body_password = request.json.get("password")
+    if body_email and body_password:
+        user = User.query.filter_by(email=body_email).filter_by(
+            password=body_password).first()
+        if user:
+            return jsonify({"logged": True, "user": user.serialize()}), 200
+        else:
+            return jsonify({"logged": False, "msg": "Bad info"}), 400
+    else:
+        return jsonify({"logged": False, "msg": "Missing info"}), 400
