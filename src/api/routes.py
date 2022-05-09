@@ -7,48 +7,40 @@ api = Blueprint('api', __name__)
 
 
 @api.route("/register", methods=["POST"])
-def register_user():
+def register():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:
-        new_user = User(email=body_email, password=body_password)
-        db.session.add(new_user)
+        user = User(email=body_email, password=body_password)
+        db.session.add(user)
         db.session.commit()
-        return jsonify({"create": True, }), 200
+        return jsonify({"created": True, }), 200
     else:
-        return jsonify({"create": False, "msg": "Missing info"}), 400
+        return jsonify({"msg": "Bad username or password"}), 401
 
 
 @api.route("/login", methods=["POST"])
-def login_user():
+def login():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:
-        user = User.query.filter_by(email=body_email).filter_by(
-            password=body_password).first()
+        user = User.query.filter_by(
+            email=body_email, password=body_password).first()
         if user:
-            token = create_access_token(identity=user.id)
-            return jsonify({"logged": True, "token": token, "user": user.serialize()}), 200
+            access_token = create_access_token(identity=user.id)
+            return jsonify({"token": access_token}), 200
         else:
-            return jsonify({"logged": False, "msg": "Bad info"}), 400
+            return jsonify({"msg": "Bad username or password"}), 401
     else:
-        return jsonify({"logged": False, "msg": "Missing info"}), 400
+        return jsonify({"msg": "Bad username or password"}), 401
 
 
-@api.route("/planets", methods=["GET"])
+@api.route("/protected", methods=["GET"])
 @jwt_required()
-def get_planets():
-    current_user_id = get_jwt_identity()
-    user = User.query.get(current_user_id)
+def protected():
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
     if user:
-        return jsonify({"info": ["Calamardo", "Batman", "King"]}), 200
+        return jsonify({"logged_in": True}), 200
     else:
-        return jsonify({"msg": "Not authorized"}), 400
-
-
-@api.route("/user", methods=["GET"])
-@jwt_required()
-def get_user():
-    current_user_id = get_jwt_identity()
-    user = User.query.get(current_user_id)
-    return jsonify({"user": user.serialize()}), 200
+        return jsonify({"logged_in": False}), 400
