@@ -9,13 +9,14 @@ export const Home = () => {
         <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="https://wallpapercave.com/wp/wp2141398.png" className="d-block w-100" alt="..." />
+                    <img src="https://wallpapercave.com/wp/wp2141398.png" className="d-block w-100" alt="design" />
                 </div>
                 <div className="carousel-item">
-                    <img src="https://wallpaperaccess.com/full/1657861.jpg" className="d-block w-100" alt="..." />
+                    <img src="https://wallpaperaccess.com/full/1657861.jpg" className="d-block w-100" alt="hobbies" />
                 </div>
                 <div className="carousel-item">
-                    <img src="https://www.itl.cat/pngfile/big/327-3275892_web-development-application-design-developer.png" className="d-block w-100" alt="..." />
+                    <img src="https://www.itl.cat/pngfile/big/327-3275892_web-development-application-design-developer.png" className="d-block w-100" alt="
+Board" />
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

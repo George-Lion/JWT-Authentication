@@ -15,8 +15,7 @@ export const Login = () => {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(user),
-                }
-            );
+                })
             const data = await resp.json();
             if (data.token) {
                 localStorage.setItem("token", data.token);

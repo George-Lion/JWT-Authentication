@@ -23,7 +23,6 @@ export const Register = () => {
             alert('ERROR')
         }
     }
-
     return (
         <div className="text-center mt-5 mx-auto" style={{ "width": "1000px" }}>
             <h1 className="mb-5">REGISTER</h1>

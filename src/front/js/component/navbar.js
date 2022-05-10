@@ -10,15 +10,15 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-dark">
 			{store.logged != null ? <div className="container">
-				<Link to="/home">
+				<Link to="/home" style={{ textDecoration: 'none' }}>
 					<span className="navbar-brand mb-0 h1 text-light">HOME</span>
 				</Link>
 				{store.logged == true ? <Link to="/private" className="m-3">
-					<button className="btn btn-warning">Private</button>
+					<button className="btn btn-light">Private</button>
 				</Link> : null}
 				{store.logged == true ? <div>
 					<Link to="/login">
-						<button className="btn btn-danger" onClick={() => actions.logout()}>Logout</button>
+						<button className="btn btn-light" onClick={() => actions.logout()}>Logout</button>
 					</Link>
 				</div> : <div>
 					<Link to="/login" className="me-3">
