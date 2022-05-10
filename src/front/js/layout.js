@@ -21,7 +21,7 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/home">
+						<Route exact path="/">
 							<Home />
 						</Route>
 						<Route exact path="/private">

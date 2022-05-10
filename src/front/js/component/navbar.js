@@ -10,7 +10,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light bg-dark">
 			{store.logged != null ? <div className="container">
-				<Link to="/home" style={{ textDecoration: 'none' }}>
+				<Link to="/" style={{ textDecoration: 'none' }}>
 					<span className="navbar-brand mb-0 h1 text-light">HOME</span>
 				</Link>
 				{store.logged == true ? <Link to="/private" className="m-3">

@@ -29,14 +29,12 @@ export const Private = () => {
 									<small>Earth</small>
 								</li>
 								<li className="d-flex align-items-center">
-
 									<small>3d</small>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-
 				<div className="col">
 					<div className="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style={{ "backgroundImage": "url('https://media.gq.com.mx/photos/5c8fe8f0d47f8ca854fd4552/16:9/w_2560%2Cc_limit/GettyImages-913710180.jpg')" }}>
 						<div className="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -55,7 +53,6 @@ export const Private = () => {
 						</div>
 					</div>
 				</div>
-
 				<div className="col">
 					<div className="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style={{ "backgroundImage": "url('https://www.caracteristicas.co/wp-content/uploads/2017/03/ciudad-3-e1565900111723.jpg')" }}>
 						<div className="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
@@ -65,11 +62,9 @@ export const Private = () => {
 									<h5>THU</h5>
 								</li>
 								<li className="d-flex align-items-center me-3">
-
 									<small>California</small>
 								</li>
 								<li className="d-flex align-items-center">
-
 									<small>5d</small>
 								</li>
 							</ul>
